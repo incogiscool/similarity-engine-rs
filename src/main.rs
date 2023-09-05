@@ -1,3 +1,5 @@
+use std::time::{Instant, Duration};
+
 #[derive(Debug)]
 struct Item {
     rating: Vec<i32>,
@@ -146,7 +148,18 @@ fn main() {
         id: 5
     });
 
+    let start_time = Instant::now();
+
     let similar = engine.get_similar(5);
     println!("{:?}", similar);
+
+        // End measuring time
+        let end_time = Instant::now();
+
+        // Calculate the elapsed time
+        let elapsed_time = end_time - start_time;
+    
+        // Print the elapsed time
+        println!("Elapsed time: {:?}s", elapsed_time.as_secs_f32());
 
 }
